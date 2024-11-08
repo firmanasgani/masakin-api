@@ -8,6 +8,8 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
+from controllers.users import users_routes
+
 
 def create_app(is_test=False):
     app = Flask(__name__)
@@ -35,6 +37,8 @@ def create_app(is_test=False):
     Migrate(app, db)
 
     CORS(app)
+
+    app.register_blueprint(users_routes)
 
     jwt = JWTManager(app)
     app.config["JWT_SECRET_KEY"] = "Mau Masak Ya Masakin"
