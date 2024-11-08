@@ -6,6 +6,14 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-smorest = "*"
+flask-migrate = "*"
+python-dotenv = "*"
+flask-jwt-extended = "*"
+flask-login = "*"
+mysql-connector-python = "*"
+sqlalchemy = "*"
+bcrypt = "*"
+flask-cors = "*"
 
 [dev-packages]
 
