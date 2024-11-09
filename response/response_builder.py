@@ -42,6 +42,33 @@ def build_paginated_response(pagination, page, per_page, endpoint, schema, **fil
     }, HTTPStatus.OK
 
 
+from flask import url_for
+from http import HTTPStatus
+
+def build_non_paginated_response(items, endpoint, schema, **filters):
+    """
+    Builds a non-paginated response for any model.
+
+    Parameters:
+    - items: List of model instances.
+    - endpoint: The endpoint for generating URL links.
+    - schema: Marshmallow schema for serializing items.
+    - filters: Additional filters as query parameters.
+    """
+    serialized_items = schema.dump(items)
+    links = {
+        "self": url_for(endpoint, _external=True, **filters)
+    }
+
+    return {
+        "status": "success",
+        "data": {
+            "items": serialized_items, 
+            "links": links,
+        },
+    }, HTTPStatus.OK
+
+
 def build_single_item_response(item, endpoint, schema, **params):
     """
     Builds a response for a single item.
