@@ -7,7 +7,9 @@ from db import db
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+from controllers.recipes_controller import blp as RecipeBlueprint
 
+migrate = Migrate()
 
 def create_app(is_test=False):
     app = Flask(__name__)
@@ -32,14 +34,14 @@ def create_app(is_test=False):
         )
 
     db.init_app(app)
-    Migrate(app, db)
+    migrate.init_app(app, db)
 
     CORS(app)
 
     jwt = JWTManager(app)
-    app.config["JWT_SECRET_KEY"] = "Mau Masak Ya Masakin"
-    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 36000  #  Expires in 10 hours
-    app.config["JWT_REFRESH_TOKEN_EXPIRES"] = 2592000  #  Expires in 30 days
+    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "default-secret-key")
+    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 36000))
+    app.config["JWT_REFRESH_TOKEN_EXPIRES"] = int(os.getenv("JWT_REFRESH_TOKEN_EXPIRES", 2592000))
 
     # JWT error handlers
     @jwt.expired_token_loader
@@ -59,5 +61,6 @@ def create_app(is_test=False):
         return jsonify({"message": "Fresh token required"}), 401
 
     api = Api(app)
+    api.register_blueprint(RecipeBlueprint)
 
     return app
