@@ -27,6 +27,7 @@ def get_all_recipes():
         difficulty = request.args.get('difficulty', type=int)
         sort_by = request.args.get('sort_by', 'created_at')
         order = request.args.get('order', 'desc').lower()
+        name = request.args.get('name')
 
         # Validations
         if page < 1:
@@ -36,13 +37,15 @@ def get_all_recipes():
             abort(HTTPStatus.BAD_REQUEST, message=f"Invalid sort field. Valid options are: {', '.join(valid_sort_fields)}")
         if order not in {'asc', 'desc'}:
             abort(HTTPStatus.BAD_REQUEST, message="Invalid order. Use 'asc' or 'desc'")
-
+     
         # Query construction
         query = RecipeModel.query
         if country:
             query = query.filter(RecipeModel.country == country)
         if difficulty:
             query = query.filter(RecipeModel.difficulty == difficulty)
+        if name:
+            query = query.filter(RecipeModel.name.ilike(f"%{name}%"))
 
         sort_column = getattr(RecipeModel, sort_by)
         query = query.order_by(sort_column.desc() if order == 'desc' else sort_column.asc())
