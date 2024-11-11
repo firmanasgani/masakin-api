@@ -71,7 +71,7 @@ def get_all_recipes():
 
 @blp.route("/recipes/<string:recipe_id>", methods=["GET"])
 def get_recipe_by_id(recipe_id):
-    """Fetch a recipe by ID."""
+    """Fetch a recipe by ID, including its ingredients."""
     try:
         recipe = RecipeModel.query.get(recipe_id)
         if not recipe:
@@ -81,8 +81,8 @@ def get_recipe_by_id(recipe_id):
         return build_single_item_response(
             item=recipe,
             endpoint='recipes.get_recipe_by_id',
-            schema=recipe_schema,
+            schema=recipe_schema, 
             recipe_id=recipe_id
         )
-    except Exception:
-        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message="An unexpected error occurred")
+    except Exception as e:
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message=f"An unexpected error occurred: {str(e)}")
