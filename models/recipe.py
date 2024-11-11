@@ -1,5 +1,6 @@
 from datetime import datetime
 from db import db
+from sqlalchemy.orm import relationship
 
 class RecipeModel(db.Model):
     __tablename__ = 'recipes'
@@ -15,3 +16,5 @@ class RecipeModel(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=True, onupdate=datetime.utcnow)
 
+    ingredients = relationship("IngredientModel", back_populates="recipe") 
+ 
