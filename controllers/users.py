@@ -59,7 +59,10 @@ def login_user():
             return jsonify({'message': 'Incorrect password'}), 401
 
         access_token = create_access_token(identity={'user_id': user.id, 'username': user.full_name})
-        return jsonify({'access_token': access_token}), 200
+        return jsonify({
+            'message': 'User login successful',
+            'access_token': access_token
+        }), 200
 
     except Exception as e:
         return jsonify({'message': f'Login failed: {str(e)}'}), 500
@@ -70,6 +73,6 @@ def login_user():
 @users_routes.route("/users/logout", methods=["POST"])
 @jwt_required()
 def logout_user():
-    response = jsonify({'message': 'Logout successful'})
+    response = jsonify({'message': ' User Logout successful'})
     unset_jwt_cookies(response) 
     return response, 200
