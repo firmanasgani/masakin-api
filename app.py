@@ -9,6 +9,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from controllers.recipes_controller import blp as RecipeBlueprint
 from controllers.ingredients_controller import blp as IngredientBlueprint
+from controllers.tools_controller import blp as ToolBlueprint
 from controllers.users import users_routes
 
 migrate = Migrate()
@@ -67,5 +68,6 @@ def create_app(is_test=False):
     api = Api(app)
     api.register_blueprint(RecipeBlueprint)
     api.register_blueprint(IngredientBlueprint)
+    api.register_blueprint(ToolBlueprint)
 
     return app
