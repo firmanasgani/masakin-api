@@ -1,6 +1,7 @@
 from marshmallow import Schema, fields
 
 from schemas.ingredient import IngredientSchema
+from schemas.tool import ToolSchema
 
 class RecipeSchema(Schema):
     id = fields.Str(required=True)
@@ -13,3 +14,4 @@ class RecipeSchema(Schema):
     estimated_time = fields.Str(required=True)
     created_at = fields.DateTime()
     ingredients = fields.List(fields.Nested(IngredientSchema))
+    tools = fields.List(fields.Nested(ToolSchema))

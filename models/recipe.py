@@ -17,4 +17,5 @@ class RecipeModel(db.Model):
     updated_at = db.Column(db.DateTime, nullable=True, onupdate=datetime.utcnow)
 
     ingredients = relationship("IngredientModel", back_populates="recipe") 
+    tools = relationship("ToolModel", back_populates="recipe") 
  
