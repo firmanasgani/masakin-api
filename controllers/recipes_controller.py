@@ -65,8 +65,8 @@ def get_all_recipes():
         )
     except ValueError:
         abort(HTTPStatus.BAD_REQUEST, message="Invalid parameter value")
-    except Exception:
-        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message="An unexpected error occurred")
+    except Exception as e:
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message=f"An unexpected error occurred: {str(e)}")
 
 
 @blp.route("/recipes/<string:recipe_id>", methods=["GET"])

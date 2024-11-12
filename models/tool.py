@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from db import db
+from sqlalchemy.orm import relationship
 
 class ToolModel(db.Model):
     __tablename__ = "tools_recipes"
@@ -9,3 +10,5 @@ class ToolModel(db.Model):
     nama_alat = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now(timezone.utc))
     updated_at = db.Column(db.DateTime, nullable=True, onupdate=datetime.now(timezone.utc))
+
+    recipe = relationship("RecipeModel", back_populates="tools")
