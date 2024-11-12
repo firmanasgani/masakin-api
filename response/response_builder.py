@@ -41,10 +41,6 @@ def build_paginated_response(pagination, page, per_page, endpoint, schema, **fil
         },
     }, HTTPStatus.OK
 
-
-from flask import url_for
-from http import HTTPStatus
-
 def build_non_paginated_response(items, endpoint, schema, **filters):
     """
     Builds a non-paginated response for any model.
