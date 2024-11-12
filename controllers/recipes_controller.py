@@ -27,6 +27,7 @@ def get_all_recipes():
         difficulty = request.args.get('difficulty', type=int)
         sort_by = request.args.get('sort_by', 'created_at')
         order = request.args.get('order', 'desc').lower()
+        name = request.args.get('name')
 
         # Validations
         if page < 1:
@@ -36,13 +37,15 @@ def get_all_recipes():
             abort(HTTPStatus.BAD_REQUEST, message=f"Invalid sort field. Valid options are: {', '.join(valid_sort_fields)}")
         if order not in {'asc', 'desc'}:
             abort(HTTPStatus.BAD_REQUEST, message="Invalid order. Use 'asc' or 'desc'")
-
+     
         # Query construction
         query = RecipeModel.query
         if country:
             query = query.filter(RecipeModel.country == country)
         if difficulty:
             query = query.filter(RecipeModel.difficulty == difficulty)
+        if name:
+            query = query.filter(RecipeModel.name.ilike(f"%{name}%"))
 
         sort_column = getattr(RecipeModel, sort_by)
         query = query.order_by(sort_column.desc() if order == 'desc' else sort_column.asc())
@@ -62,13 +65,13 @@ def get_all_recipes():
         )
     except ValueError:
         abort(HTTPStatus.BAD_REQUEST, message="Invalid parameter value")
-    except Exception:
-        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message="An unexpected error occurred")
+    except Exception as e:
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message=f"An unexpected error occurred: {str(e)}")
 
 
 @blp.route("/recipes/<string:recipe_id>", methods=["GET"])
 def get_recipe_by_id(recipe_id):
-    """Fetch a recipe by ID."""
+    """Fetch a recipe by ID, including its ingredients."""
     try:
         recipe = RecipeModel.query.get(recipe_id)
         if not recipe:
@@ -78,8 +81,8 @@ def get_recipe_by_id(recipe_id):
         return build_single_item_response(
             item=recipe,
             endpoint='recipes.get_recipe_by_id',
-            schema=recipe_schema,
+            schema=recipe_schema, 
             recipe_id=recipe_id
         )
-    except Exception:
-        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message="An unexpected error occurred")
+    except Exception as e:
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR, message=f"An unexpected error occurred: {str(e)}")
