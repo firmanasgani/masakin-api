@@ -1,4 +1,5 @@
-from flask import Blueprint,request, jsonify
+from flask import request, jsonify
+from flask_smorest import Blueprint
 from models.howtocook import HowToCook
 
 howtocook_bp = Blueprint("howtocook", __name__)
