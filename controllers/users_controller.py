@@ -4,7 +4,7 @@ from flask_jwt_extended import create_access_token, jwt_required, unset_jwt_cook
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
 
-from models.users import Users
+from models.users import UserModel
 
 users_routes = Blueprint("users_routes", __name__)
 
@@ -15,8 +15,8 @@ s = Session()
 def register_user():
 
     try:
-        NewUser = Users(
-            id=request.form["id"], # ini mau Generate ID pake apa ya nanti?
+        NewUser = UserModel(
+            id=request.form["id"],
             email=request.form["email"],
             full_name=request.form["full_name"],
         )
@@ -51,7 +51,7 @@ def login_user():
         return jsonify({'message': 'Email and password are required'}), 400
 
     try:
-        user = s.query(Users).filter_by(email=email).first()
+        user = s.query(UserModel).filter_by(email=email).first()
 
         if not user:
             return jsonify({'message': 'User not found'}), 404
