@@ -7,7 +7,7 @@ class RatingModel(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     users_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)  
-    rating_value = db.Column(db.Intger, nullable=False)
+    rating_value = db.Column(db.Integer, nullable=False)
 
     recipe = relationship("RecipeModel", back_populates="rating")
     user = relationship("UserModel", back_populates="rating")

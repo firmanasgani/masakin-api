@@ -18,4 +18,5 @@ class RecipeModel(db.Model):
 
     ingredients = relationship("IngredientModel", back_populates="recipe") 
     tools = relationship("ToolModel", back_populates="recipe") 
+    rating = relationship("RatingModel", back_populates="recipe") 
  

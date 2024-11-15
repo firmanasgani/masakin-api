@@ -12,7 +12,7 @@ from controllers.ingredients_controller import blp as IngredientBlueprint
 from controllers.tools_controller import blp as ToolBlueprint
 from controllers.howto_controller import howtocook_bp
 
-from controllers.users import users_routes
+from controllers.users_controller import users_routes
 
 migrate = Migrate()
 
