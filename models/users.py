@@ -1,17 +1,16 @@
 from models.base import Base
-
-from sqlalchemy import String, DateTime
+from sqlalchemy import String, DateTime, Integer
 from sqlalchemy.sql import func
 from sqlalchemy.orm import mapped_column
-
+from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 
 import bcrypt
 
-class Users(Base, UserMixin):
+class UserModel(Base, UserMixin):
     __tablename__ = "users"
 
-    id = mapped_column(String(255), primary_key=True)
+    id = mapped_column(Integer, primary_key=True, autoincrement=True)
     email = mapped_column(String(255))
     full_name = mapped_column(String(255))
     password = mapped_column(String(255))
@@ -23,3 +22,6 @@ class Users(Base, UserMixin):
 
     def check_password(self, password):
         return bcrypt.checkpw(password.encode("utf-8"), self.password.encode("utf-8"))
+    
+    rating = relationship("RatingModel", back_populates="user") 
+
