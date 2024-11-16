@@ -9,44 +9,44 @@ def generate_recipe_data():
         {
             "name": "Nasi Goreng",
             "img_banner": "https://example.com/images/nasi-goreng.jpg",
-            "country": "Indonesia",
             "description": "Delicious fried rice with traditional spices.",
             "video_url": "https://example.com/videos/nasi-goreng.mp4",
             "difficulty": 2,
-            "estimated_time": "30 minutes"
+            "estimated_time": "30 minutes",
+            "category_id": 1
         },
         {
             "name": "Spaghetti Carbonara",
             "img_banner": "https://example.com/images/carbonara.jpg",
-            "country": "Italy",
             "description": "Classic Italian pasta dish with creamy sauce.",
             "video_url": "https://example.com/videos/carbonara.mp4",
             "difficulty": 3,
-            "estimated_time": "25 minutes"
+            "estimated_time": "25 minutes",
+            "category_id": 2
         },
         {
             "name": "Sushi",
             "img_banner": "https://example.com/images/sushi.jpg",
-            "country": "Japan",
             "description": "Fresh sushi rolls with various fillings.",
             "video_url": "https://example.com/videos/sushi.mp4",
             "difficulty": 4,
-            "estimated_time": "45 minutes"
+            "estimated_time": "45 minutes",
+            "category_id": 3
         }
     ]
 
     recipes = []
-    for i in range(100):
+    for i in range(60):
         base = random.choice(base_recipes)
         recipes.append({
             "name": f"{base['name']} Variant {i+1}",
             "img_banner": base["img_banner"].replace(".jpg", f"-{i+1}.jpg"),
-            "country": base["country"],
             "description": f"{base['description']} (Variant {i+1})",
             "video_url": base["video_url"].replace(".mp4", f"-{i+1}.mp4"),
             "difficulty": random.randint(1, 5),
             "estimated_time": f"{random.randint(15, 60)} minutes",
-            "created_at": datetime.now(timezone.utc) - timedelta(days=i)
+            "created_at": datetime.now(timezone.utc) - timedelta(days=i),
+            "category_id": base["category_id"]
         })
     return recipes
 
