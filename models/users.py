@@ -24,5 +24,5 @@ class UserModel(db.Model, UserMixin):
     def check_password(self, password):
         return bcrypt.checkpw(password.encode("utf-8"), self.password.encode("utf-8"))
     
-    # rating = relationship("RatingModel", back_populates="user") 
+    rating = relationship("RatingModel", back_populates="user") 
 
