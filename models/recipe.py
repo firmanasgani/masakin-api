@@ -16,7 +16,9 @@ class RecipeModel(db.Model):
     estimated_time = db.Column(db.String(11), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime, nullable=True, onupdate=datetime.now())
-
+ 
+     
+    rating = relationship("RatingModel", back_populates="recipe") 
     ingredient_groups = relationship("IngredientGroupModel", back_populates="recipe")
     tools = relationship("ToolModel", back_populates="recipe")
     category = relationship("CategoryModel", back_populates="recipes")

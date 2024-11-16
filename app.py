@@ -20,6 +20,7 @@ from models.ingredient import IngredientModel
 from models.ingredient_group import IngredientGroupModel
 from models.howtocook import HowToCook
 from models.users import UserModel
+from models.rating import RatingModel
 
 migrate = Migrate()
 

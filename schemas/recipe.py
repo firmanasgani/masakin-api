@@ -3,6 +3,7 @@ from marshmallow import Schema, fields
 from schemas.category import CategorySchema
 from schemas.ingredient import IngredientSchema
 from schemas.ingredient_group import IngredientGroupSchema
+from schemas.rating import RatingSchema
 from schemas.tool import ToolSchema
 
 class RecipeSchema(Schema):
@@ -17,3 +18,4 @@ class RecipeSchema(Schema):
     ingredient_groups = fields.List(fields.Nested(IngredientGroupSchema))
     tools = fields.List(fields.Nested(ToolSchema))
     category = fields.Nested(CategorySchema)
+    rating = fields.Nested(RatingSchema)
