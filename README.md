@@ -58,7 +58,7 @@ flask db upgrade
 
 ### Step 6: Seed the Database
 ```bash
-pipenv run python -m seeders.seed_recipes
+pipenv run python -m seeders.seed
 ```
 
 ### Step 7: Start the Server
