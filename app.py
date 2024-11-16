@@ -11,8 +11,15 @@ from controllers.recipes_controller import blp as RecipeBlueprint
 from controllers.ingredients_controller import blp as IngredientBlueprint
 from controllers.tools_controller import blp as ToolBlueprint
 from controllers.howto_controller import howtocook_bp
-
 from controllers.users_controller import users_routes
+
+from models.category import CategoryModel
+from models.recipe import RecipeModel
+from models.recipe import RecipeModel
+from models.ingredient import IngredientModel
+from models.ingredient_group import IngredientGroupModel
+from models.howtocook import HowToCook
+from models.users import UserModel
 
 migrate = Migrate()
 
