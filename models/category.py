@@ -20,4 +20,4 @@ class CategoryModel(db.Model):
         onupdate=func.now(),
     )
 
-    recipe = relationship("RecipeModel", back_populates="categories")
+    recipes = relationship("RecipeModel", back_populates="category")
