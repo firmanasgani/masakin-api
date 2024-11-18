@@ -6,6 +6,7 @@ from http import HTTPStatus
 from response.response_builder import build_single_item_response, build_non_paginated_response
 from sqlalchemy.exc import SQLAlchemyError
 from controllers.users_controller import s
+from flask_jwt_extended import get_jwt_identity
 
 blp = Blueprint("ratings", __name__, description="Operations on ratings")
 
@@ -39,6 +40,7 @@ def get_average_rating(recipe_id):
 def add_rating(recipe_id):
     """Add a rating for a specific recipe."""
     try:
+        user_id = get_jwt_identity()
         rating_data = request.get_json()
         validated_data = add_rating_schema.load(rating_data)
 
@@ -48,7 +50,7 @@ def add_rating(recipe_id):
             abort(HTTPStatus.BAD_REQUEST, message="Rating value must be between 1 and 5")
 
         new_rating = RatingModel(
-            users_id=validated_data['users_id'],
+            users_id=user_id,
             recipe_id=recipe_id,
             rating_value=rating_value
         )
