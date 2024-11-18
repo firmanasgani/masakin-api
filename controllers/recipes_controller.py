@@ -41,7 +41,7 @@ def get_all_recipes():
         # Query construction
         query = RecipeModel.query
         if country:
-            query = query.filter(RecipeModel.country == country)
+            query = query.filter(RecipeModel.category_id == country)
         if difficulty:
             query = query.filter(RecipeModel.difficulty == difficulty)
         if name:

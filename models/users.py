@@ -4,10 +4,11 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin
+from db import db
 
 import bcrypt
 
-class UserModel(Base, UserMixin):
+class UserModel(db.Model, UserMixin):
     __tablename__ = "users"
 
     id = mapped_column(Integer, primary_key=True, autoincrement=True)

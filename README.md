@@ -68,13 +68,11 @@ flask run
 
 ## Project Structure
 ```bash
-
 ├── connectors/                    # Custom database or service connectors
 │   └── __init__.py
 ├── controllers/                   # API controllers for handling requests
 │   ├── __init__.py
 │   └── recipes_controller.py
-├── db.py                          # Database initialization
 ├── migrations/                    # Alembic database migration files
 │   ├── README
 │   ├── alembic.ini
@@ -94,8 +92,9 @@ flask run
 ├── seeders/                       # Seed scripts for populating the database
 │   ├── __init__.py
 │   └── seed_recipes.py
-└── utils/                         # Utility functions
-    └── __init__.py
+├── utils/                         # Utility functions
+│    └── __init__.py
+├── db.py                          # Database initialization
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
