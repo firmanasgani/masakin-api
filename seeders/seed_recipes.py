@@ -13,7 +13,7 @@ def generate_recipe_data():
             "video_url": "https://example.com/videos/nasi-goreng.mp4",
             "difficulty": 2,
             "estimated_time": "30 minutes",
-            "category_id": 1
+            "category_id": 1,
         },
         {
             "name": "Spaghetti Carbonara",
@@ -22,7 +22,7 @@ def generate_recipe_data():
             "video_url": "https://example.com/videos/carbonara.mp4",
             "difficulty": 3,
             "estimated_time": "25 minutes",
-            "category_id": 2
+            "category_id": 2,
         },
         {
             "name": "Sushi",
@@ -31,12 +31,12 @@ def generate_recipe_data():
             "video_url": "https://example.com/videos/sushi.mp4",
             "difficulty": 4,
             "estimated_time": "45 minutes",
-            "category_id": 3
+            "category_id": 3,
         }
     ]
 
     recipes = []
-    for i in range(60):
+    for i in range(20):
         base = random.choice(base_recipes)
         recipes.append({
             "name": f"{base['name']} Variant {i+1}",
@@ -46,6 +46,7 @@ def generate_recipe_data():
             "difficulty": random.randint(1, 5),
             "estimated_time": f"{random.randint(15, 60)} minutes",
             "created_at": datetime.now(timezone.utc) - timedelta(days=i),
+            "rating":  random.randint(1, 5),
             "category_id": base["category_id"]
         })
     return recipes
