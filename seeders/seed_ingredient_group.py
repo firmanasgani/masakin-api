@@ -58,6 +58,8 @@ def generate_ingredient_data(group_id):
             "ingredient_group_id": group_id,
             "nama_bahan": f"{base['nama_bahan']} Variant {i+1}",
             "takaran": base["takaran"],
+            "image": base["image"],
+            "description": base["description"],
             "created_at": datetime.now(timezone.utc) - timedelta(days=random.randint(1, 30)),
             "updated_at": None
         })
@@ -70,7 +72,7 @@ def seed_data():
     with app.app_context():
         print("Seeding data...")
         
-        for recipe_id in range(1, 51):  # Assuming 50 recipes
+        for recipe_id in range(1, 20):  # Assuming 20 recipes
             print(f"Seeding ingredient groups for Recipe ID {recipe_id}...")
             groups = generate_ingredient_group_data(recipe_id)
             

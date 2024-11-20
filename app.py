@@ -21,6 +21,7 @@ from models.ingredient_group import IngredientGroupModel
 from models.howtocook import HowToCook
 from models.users import UserModel
 from models.rating import RatingModel
+from models.how_to_cook_image import HowToCookImage
 
 migrate = Migrate()
 

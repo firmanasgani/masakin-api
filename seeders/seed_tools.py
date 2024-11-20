@@ -19,10 +19,10 @@ def generate_tool_data():
     ]
 
     tools = []
-    for i in range(1000):
+    for i in range(100):
         base = random.choice(base_tools)
         tools.append({
-            "recipe_id": str(random.randint(1, 50)),  # Assuming you have 50 recipes
+            "recipe_id": str(random.randint(1, 20)),  # Assuming you have 20 recipes
             "nama_alat": f"{base['nama_alat']} Variant {i+1}",
             "created_at": datetime.now(timezone.utc) - timedelta(days=random.randint(1, 30)),
             "updated_at": None
