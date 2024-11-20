@@ -8,7 +8,7 @@ def generate_recipe_data():
     base_recipes = [
         {
             "name": "Nasi Goreng",
-            "img_banner": "https://example.com/images/nasi-goreng.jpg",
+            "img_banner": "https://storage.googleapis.com/masak-masak-file/file-11.jpeg",
             "description": "Delicious fried rice with traditional spices.",
             "video_url": "https://example.com/videos/nasi-goreng.mp4",
             "difficulty": 2,
@@ -17,7 +17,7 @@ def generate_recipe_data():
         },
         {
             "name": "Spaghetti Carbonara",
-            "img_banner": "https://example.com/images/carbonara.jpg",
+            "img_banner": "https://storage.googleapis.com/masak-masak-file/file-12.jpeg",
             "description": "Classic Italian pasta dish with creamy sauce.",
             "video_url": "https://example.com/videos/carbonara.mp4",
             "difficulty": 3,
@@ -26,7 +26,7 @@ def generate_recipe_data():
         },
         {
             "name": "Sushi",
-            "img_banner": "https://example.com/images/sushi.jpg",
+            "img_banner": "https://storage.googleapis.com/masak-masak-file/file-13.jpeg",
             "description": "Fresh sushi rolls with various fillings.",
             "video_url": "https://example.com/videos/sushi.mp4",
             "difficulty": 4,

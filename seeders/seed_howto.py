@@ -28,6 +28,35 @@ def generate_how_to_cook_data(valid_recipe_ids):
         })
     return steps
 
+def generate_how_to_cook_images(howtocook_id):
+    """Generate random image URLs for each HowToCook record."""
+    img_urls = [
+        "https://storage.googleapis.com/masak-masak-file/file-14.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-15.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-16.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-17.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-18.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-19.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-20.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-21.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-22.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-23.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-24.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-25.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-26.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-27.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-28.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-29.jpeg",
+    ]
+    images = []
+    for img_url in img_urls:
+        images.append({
+            "howtocook_id": howtocook_id,
+            "img_url": img_url,
+            "updated_at": datetime.now(timezone.utc)
+        })
+    return images
+
 def seed_data():
     """Seed the database with sample steps for recipes."""
     app = create_app()

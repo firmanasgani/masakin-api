@@ -39,16 +39,16 @@ def generate_ingredient_group_data(recipe_id):
 
 def generate_ingredient_data(group_id):
     base_ingredients = [
-        {"nama_bahan": "Sugar", "takaran": "2 tbsp"},
-        {"nama_bahan": "Salt", "takaran": "1 tsp"},
-        {"nama_bahan": "Flour", "takaran": "500 g"},
-        {"nama_bahan": "Egg", "takaran": "3 pcs"},
-        {"nama_bahan": "Milk", "takaran": "1 cup"},
-        {"nama_bahan": "Butter", "takaran": "100 g"},
-        {"nama_bahan": "Chicken Breast", "takaran": "250 g"},
-        {"nama_bahan": "Garlic", "takaran": "2 cloves"},
-        {"nama_bahan": "Onion", "takaran": "1 large"},
-        {"nama_bahan": "Olive Oil", "takaran": "3 tbsp"}
+        {"nama_bahan": "Sugar", "takaran": "2 tbsp", "description": "Sweetener", "image": "https://storage.googleapis.com/masak-masak-file/file-1.jpeg"},
+        {"nama_bahan": "Salt", "takaran": "1 tsp", "description": "Seasoning", "image": "https://storage.googleapis.com/masak-masak-file/file-2.jpeg"},
+        {"nama_bahan": "Flour", "takaran": "500 g", "description": "Baking base", "image": "https://storage.googleapis.com/masak-masak-file/file-3.jpeg"},
+        {"nama_bahan": "Egg", "takaran": "3 pcs", "description": "Binding agent", "image": "https://storage.googleapis.com/masak-masak-file/file-4.jpeg"},
+        {"nama_bahan": "Milk", "takaran": "1 cup", "description": "Liquid base", "image": "https://storage.googleapis.com/masak-masak-file/file-5.jpegg"},
+        {"nama_bahan": "Butter", "takaran": "100 g", "description": "Rich flavor", "image": "https://storage.googleapis.com/masak-masak-file/file-6.jpeg"},
+        {"nama_bahan": "Chicken Breast", "takaran": "250 g", "description": "Protein source", "image": "https://storage.googleapis.com/masak-masak-file/file-7.jpeg"},
+        {"nama_bahan": "Garlic", "takaran": "2 cloves", "description": "Flavor enhancer", "image": "https://storage.googleapis.com/masak-masak-file/file-8.jpeg"},
+        {"nama_bahan": "Onion", "takaran": "1 large", "description": "Aromatic", "image": "https://storage.googleapis.com/masak-masak-file/file-9.jpeg"},
+        {"nama_bahan": "Olive Oil", "takaran": "3 tbsp", "description": "Healthy fat", "image": "https://storage.googleapis.com/masak-masak-file/file-10.jpeg"}
     ]
 
     ingredients = []
