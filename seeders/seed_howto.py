@@ -31,9 +31,22 @@ def generate_how_to_cook_data(valid_recipe_ids):
 def generate_how_to_cook_images(howtocook_id):
     """Generate random image URLs for each HowToCook record."""
     img_urls = [
-        "https://example.com/image1.jpg",
-        "https://example.com/image2.jpg",
-        "https://example.com/image3.jpg",
+        "https://storage.googleapis.com/masak-masak-file/file-14.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-15.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-16.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-17.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-18.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-19.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-20.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-21.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-22.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-23.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-24.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-25.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-26.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-27.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-28.jpeg",
+        "https://storage.googleapis.com/masak-masak-file/file-29.jpeg",
     ]
     images = []
     for img_url in img_urls:
