@@ -87,7 +87,7 @@ def create_app(is_test=False):
 
     @jwt.user_identity_loader
     def user_identity_lookup(user):
-        return user.id
+        return user['user_id']
 
     api = Api(app)
     api.register_blueprint(RecipeBlueprint)
