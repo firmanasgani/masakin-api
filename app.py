@@ -25,6 +25,7 @@ from models.how_to_cook_image import HowToCookImage
 
 migrate = Migrate()
 
+
 def create_app(is_test=False):
     app = Flask(__name__)
     load_dotenv()
@@ -55,9 +56,12 @@ def create_app(is_test=False):
     app.register_blueprint(users_routes)
 
     jwt = JWTManager(app)
-    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "default-secret-key")
-    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = int(os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 36000))
-    app.config["JWT_REFRESH_TOKEN_EXPIRES"] = int(os.getenv("JWT_REFRESH_TOKEN_EXPIRES", 2592000))
+    app.config["JWT_SECRET_KEY"] = os.getenv(
+        "JWT_SECRET_KEY", "default-secret-key")
+    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = int(
+        os.getenv("JWT_ACCESS_TOKEN_EXPIRES", 36000))
+    app.config["JWT_REFRESH_TOKEN_EXPIRES"] = int(
+        os.getenv("JWT_REFRESH_TOKEN_EXPIRES", 2592000))
 
     # JWT error handlers
     @jwt.expired_token_loader
@@ -75,6 +79,15 @@ def create_app(is_test=False):
     @jwt.needs_fresh_token_loader
     def needs_fresh_token_callback(_):
         return jsonify({"message": "Fresh token required"}), 401
+
+    @jwt.user_lookup_loader
+    def user_lookup_callback(_jwt_header, jwt_data):
+        identity = jwt_data["sub"]
+        return UserModel.query.filter_by(id=identity).one_or_none()
+
+    @jwt.user_identity_loader
+    def user_identity_lookup(user):
+        return user['user_id']
 
     api = Api(app)
     api.register_blueprint(RecipeBlueprint)
