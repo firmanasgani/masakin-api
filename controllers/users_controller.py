@@ -16,7 +16,6 @@ def register_user():
 
     try:
         NewUser = UserModel(
-            id=request.form["id"],
             email=request.form["email"],
             full_name=request.form["full_name"],
         )
