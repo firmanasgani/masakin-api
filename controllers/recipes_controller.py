@@ -32,7 +32,7 @@ def get_all_recipes():
         # Validations
         if page < 1:
             abort(HTTPStatus.BAD_REQUEST, message="Page number must be greater than 0")
-        valid_sort_fields = {'created_at', 'name', 'difficulty'}
+        valid_sort_fields = {'created_at', 'name', 'difficulty','rating'}
         if sort_by not in valid_sort_fields:
             abort(HTTPStatus.BAD_REQUEST, message=f"Invalid sort field. Valid options are: {', '.join(valid_sort_fields)}")
         if order not in {'asc', 'desc'}:
@@ -43,7 +43,7 @@ def get_all_recipes():
         if country:
             query = query.filter(RecipeModel.category_id == country)
         if difficulty:
-            query = query.filter(RecipeModel.difficulty == difficulty)
+            query = query.filter(RecipeModel.difficulty == difficulty) 
         if name:
             query = query.filter(RecipeModel.name.ilike(f"%{name}%"))
 
